@@ -1,6 +1,16 @@
+# Secrets
 .env
 .env.*
 *.key
 *.pem
 secrets/
+
+# OS
 .DS_Store
+
+# Backups
+*.bak-*
+
+# Managed by Claude Code inside the linked skills folder
+claude/skills/synced/
+claude/skills/.trash/
