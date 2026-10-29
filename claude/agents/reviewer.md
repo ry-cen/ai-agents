@@ -1,6 +1,6 @@
 ---
 name: reviewer
-description: Opus code reviewer. Independently checks substantial or high-risk implementations against acceptance criteria, scope, and repository conventions. Reviews primary or worker implementations; a planner brief is optional.
+description: Fallback Opus code reviewer, used only when T3 Code delegation to Codex gpt-6.1-sol is unavailable. Independently checks substantial or high-risk implementations against acceptance criteria, scope, and repository conventions. Reviews primary or worker implementations; a planner brief is optional.
 tools: Read, Grep, Glob, Bash, WebSearch, WebFetch
 model: opus
 effort: high

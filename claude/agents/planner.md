@@ -1,6 +1,6 @@
 ---
 name: planner
-description: Opus planner. Resolves consequential design decisions and writes a design brief for sonnet workers when needed; also handles architecture, security, concurrency, and difficult tradeoffs, and re-plans after repeated worker failures. Designs; does not write or test the implementation.
+description: Opus planner. Resolves consequential design decisions and writes a design brief for gpt-6.1-sol workers when needed; also handles architecture, security, concurrency, and difficult tradeoffs, and re-plans after repeated worker failures. Designs; does not write or test the implementation.
 tools: Read, Grep, Glob, Bash, Write, WebSearch, WebFetch, ToolSearch, mcp__t3-code__delegate_task
 model: opus
 effort: high

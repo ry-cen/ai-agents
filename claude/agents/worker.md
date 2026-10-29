@@ -1,6 +1,6 @@
 ---
 name: worker
-description: Sonnet implementer for scoped tickets with clear acceptance criteria. Works from an orchestrator assignment or optional planner brief, including discovery, tests, and verification within assigned files.
+description: Fallback Sonnet implementer, used only when T3 Code delegation to Codex gpt-6.1-sol is unavailable. Handles scoped tickets with clear acceptance criteria. Works from an orchestrator assignment or optional planner brief, including discovery, tests, and verification within assigned files.
 tools: Read, Grep, Glob, Edit, Write, Bash, ToolSearch, mcp__t3-code__delegate_task
 model: sonnet
 effort: medium
