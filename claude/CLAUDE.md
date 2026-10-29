@@ -36,7 +36,7 @@ Claude Code's built-in advisor is off. The advisor is Codex GPT-6-Astra, reached
 
 When T3 Code isn't available, run `~/.claude/bin/codex-advise --role primary "<question>" [files...]` instead.
 
-It does not see the conversation, so write a self-contained question with paths and evidence, and tell it not to edit anything. In the primary session, ask it at most twice per task: once before committing to an approach on non-trivial work, and once when stuck after a failed attempt. Each agent's definition sets its own limit: planner 1, worker 1 (only when stuck), technical-writer 1, and none for reviewer, explorer and researcher.
+It does not see the conversation, so write a self-contained question with paths and evidence, and tell it not to edit anything. Use it freely in the primary session, up to about five calls per task, whenever a second opinion could change a decision: before committing to an approach on non-trivial work, at design forks or tradeoffs, when stuck after a failed attempt, when a delegated result looks off, and before accepting substantial or risky work. Skip it for trivial or mechanical work. Each agent's definition sets its own limit: planner 2, worker 2 (Codex worker per `~/.codex/AGENTS.md`, or the fallback Claude worker), technical-writer 2, and none for reviewer, explorer and researcher.
 
 ## Commits
 

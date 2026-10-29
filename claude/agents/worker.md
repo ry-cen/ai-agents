@@ -23,7 +23,7 @@ Your advisor is Codex GPT-6-Astra, a different model family that gives a second 
 
 Its answer is in `summary`. If that tool is unavailable (the session is not running in T3 Code), use `~/.claude/bin/codex-advise --role <your role> "<question>" [files...]` through Bash with a 600000 ms timeout, if you have Bash. If neither works, continue without it. Do not use Claude Code's built-in `advisor` tool. Weigh the advice, but your own evidence wins when the two conflict.
 
-Limit: at most one advisor call per task, and only when you are stuck, meaning a check has failed twice or your approach has stopped converging. Include the assignment or brief, the failing command and the relevant output. Use the advisor only for the unresolved failure.
+Limit: at most two advisor calls per task: one before committing to a non-obvious implementation approach, and one when you are stuck, meaning a check has failed twice or your approach has stopped converging. When stuck, include the assignment or brief, the failing command and the relevant output.
 
 Report back with:
 - the files you changed

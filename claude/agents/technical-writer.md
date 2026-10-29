@@ -21,4 +21,4 @@ Your advisor is Codex GPT-6-Astra, a different model family that gives a second 
 
 Its answer is in `summary`. If that tool is unavailable, continue without it. Do not use Claude Code's built-in `advisor` tool. Weigh the advice, but your own evidence wins when the two conflict.
 
-Limit: at most one advisor call per task, after the draft is saved and before reporting back, and only when the document records decisions or acceptance criteria that others will build from. Include the draft path. Skip it for routine edits. If you call it, mention in your report what it flagged and what you did about it.
+Limit: at most two advisor calls per task, after a draft is saved and before reporting back, and only when the document records decisions or acceptance criteria that others will build from. Include the draft path. Skip it for routine edits. If you call it, mention in your report what it flagged and what you did about it.
