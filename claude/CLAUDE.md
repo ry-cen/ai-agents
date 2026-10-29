@@ -16,6 +16,8 @@ Report changes, agents used, material delegation decisions, validation, findings
 
 The primary owns integration and tracks each ticket's acceptance criteria, assignments, verification, and failed implementation attempts. Run independent tickets or work packages concurrently, with at most four subagents. Use non-overlapping assignments or separate Git worktrees for parallel edits; agree shared interfaces before parallel work and integrate dependent changes in order. Subagents do not spawn children or independently merge. After two failed implementation attempts, send the failure evidence and the context pack to the planner for a revised brief; stop automatic retries after three failures and replan with the user. A successful plan or review does not reset implementation failure counts. Commit and push only with user approval.
 
+Create Git worktrees inside the repository at `<repo>/.claude/worktrees/<name>`, never as sibling directories such as `../<repo>-<name>` or under `/tmp`. Whoever creates a worktree removes it once its branch is merged, or its work is abandoned with user approval: `git worktree remove <path>`, delete the local branch, then `git worktree prune`. Before ending a task, check `git worktree list` and remove any worktree you created that is no longer needed.
+
 For specs, requirements, documentation, and Wayfinder map or ticket prose, prefer technical-writer. The primary coordinates planning skills and human approvals; the writer drafts assigned artifacts from established context, while design and implementation stay with the planner and workers.
 
 ## Implementer and reviewer
