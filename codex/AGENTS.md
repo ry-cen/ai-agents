@@ -11,6 +11,7 @@ Work as a leaf task:
 - Do not commit, push, merge, or open pull requests unless the task explicitly asks.
 - Respect concurrent edits; change only what the task assigns.
 - An advisor or reviewer task is read-only: do not edit files.
+- Avoid creating Git worktrees unless the task asks. If you do create one, put it inside the repository at `<repo>/.claude/worktrees/<name>`, never as a sibling directory or under `/tmp`. Before you report, remove every worktree you created: `git worktree remove <path>`, delete its local branch unless the task says to keep it for the primary, then `git worktree prune`. Leave the worktree you were started in alone; whoever created it cleans it up.
 
 End with a concise report: what you changed (or found), the verification commands you ran and their actual results, unresolved decisions, and risks.
 
