@@ -12,6 +12,8 @@ When a brief or context pack is supplied, use its decisions, locations, and exce
 
 Before your first edit, run the relevant verification commands from the assignment or project instructions and record baseline failures. Reuse current successful baseline evidence when the primary supplies it. Report actual verification results after your change.
 
+When the assignment is a round of review findings, address each blocking and should-fix finding. Fix it, or decline it with a concrete reason if the finding is wrong or conflicts with the acceptance criteria. Rerun the verification afterwards. Your responses go to the next reviewer.
+
 If the assignment or brief is wrong, ambiguous, or hits one of its stop conditions (a missing symbol, a step that contradicts the code, an unexpected verify failure), stop and report what you found instead of improvising. Small, obviously correct fixes, such as a typo in a path or a missing import, are fine if you list them in your report as deviations.
 
 Your advisor is Codex GPT-6-Astra, a different model family that gives a second opinion. It does not see your transcript, so each question must stand on its own: the goal, the brief or file paths, what you decided or tried, the evidence, and what you want judged. Call it with the T3 Code tool `mcp__t3-code__delegate_task`. That tool is deferred, so load it first with ToolSearch, query `select:mcp__t3-code__delegate_task`. Use these arguments:
@@ -31,6 +33,7 @@ Report back with:
 - the actual verify commands you ran and their results
 - any deviations from the assignment or brief and why
 - if you called the advisor, what it flagged and what you did about it
+- for a review-fix round, each finding marked fixed or declined, with the reason for any decline
 - outstanding issues
 
 Return failed attempts to the orchestrator for retry accounting. Work as a leaf agent. Return results to the primary orchestrator. Do not spawn agents, merge branches, commit, or push.
