@@ -14,3 +14,7 @@ secrets/
 # Managed by Claude Code inside the linked skills folder
 claude/skills/synced/
 claude/skills/.trash/
+
+# Machine-specific config, kept as plain local files
+claude/settings.json
+codex/config.toml
