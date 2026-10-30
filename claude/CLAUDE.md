@@ -52,6 +52,15 @@ Run advisor calls concurrently with other work when the answer isn't needed imme
 
 Each agent's definition sets its own limit: planner 2, worker 2 (Codex worker per `~/.codex/AGENTS.md`, or the fallback Claude worker), technical-writer 2, and none for reviewer, explorer and researcher.
 
+## Working status in T3 Code
+
+T3 Code shows a thread as working only while its turn is open. When the turn ends, the thread shows idle, even if a background command, Monitor, or delegate is still running. Show your real state:
+- While waiting on work you started and need the result of, keep the turn open with a tool that blocks. For a background command or Monitor, call `t3_background_wait` with its task ID. For a delegate, use `mode: "wait"` or follow the `next` instruction it returns. For a native Claude `Agent` you depend on, pass `run_in_background: false`.
+- Do not end the turn with "waiting for X" or "I'll check back" while X is still running. Do not wait with `sleep`, polling loops, `task_status` checks, or ScheduleWakeup either.
+- When you have finished, or are blocked on the user, end the turn so the thread shows idle. Do not keep it open with filler tool calls.
+- Watching a PR: if you say you are watching, monitoring, or babysitting a PR, or that you are waiting on its checks or reviews, you must call `watch_pull_request` for it first. Saying so without the call leaves the thread stuck because nothing will wake it. Push any branch updates before you call it, then end the turn. The watch wakes the thread when checks or reviews change. Do not wait with `gh --watch`, `sleep`, or polling. If the call fails, tell the user the PR is not being watched. Once the PR is merged, closed, or no longer needs attention, call `unwatch_pull_request` before you report done. Delegated children never watch PRs; they report the PR URL, head SHA, and check state to the primary.
+- Subagents and delegates follow the same rules. Before reporting back, finish or stop anything you started in the background.
+
 ## Commits
 
 Do not add a `Co-Authored-By: Claude` (or any Claude/Anthropic attribution) trailer to git commit messages, and do not add "Generated with Claude Code" lines to PR descriptions.
