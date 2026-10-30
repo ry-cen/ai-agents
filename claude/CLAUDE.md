@@ -12,7 +12,7 @@ Workers run checks relevant to their changes. The primary runs integration check
 
 When review is required, loop until the reviewer approves. On `changes-requested`, send the blocking and should-fix findings back: implementation fixes to the implementer, design problems to the planner. Then start a new review with the previous findings, the implementer’s responses, and the new diff. The follow-up reviewer checks that each finding was resolved and looks for regressions the fixes caused. Repeat until the verdict is `approve`. Accept the work only on approval; nits stay optional. The primary may decline a should-fix finding only with a stated reason, and that reason goes to the next reviewer. Repeat a full review when the design or scope materially changes. If three review rounds pass without approval, or the same finding keeps coming back, stop the loop and take the findings and attempts to the planner, or to the user if the planner has already been involved.
 
-Report changes, agents used, material delegation decisions, validation, findings, and remaining risks.
+Report changes, agents used, material delegation decisions, advisor input, validation, findings, and remaining risks.
 
 The primary owns integration and tracks each ticket's acceptance criteria, assignments, verification, and failed implementation attempts. Run independent tickets or work packages concurrently, with at most four subagents. Use non-overlapping assignments or separate Git worktrees for parallel edits; agree shared interfaces before parallel work and integrate dependent changes in order. Subagents do not spawn children or independently merge. After two failed implementation attempts, send the failure evidence and the context pack to the planner for a revised brief; stop automatic retries after three failures and replan with the user. A successful plan or review does not reset implementation failure counts. Commit and push only with user approval.
 
@@ -38,7 +38,19 @@ Claude Code's built-in advisor is off. The advisor is Codex GPT-6-Astra, reached
 
 When T3 Code isn't available, run `~/.claude/bin/codex-advise --role primary "<question>" [files...]` instead.
 
-It does not see the conversation, so write a self-contained question with paths and evidence, and tell it not to edit anything. Use it freely in the primary session, up to about five calls per task, whenever a second opinion could change a decision: before committing to an approach on non-trivial work, at design forks or tradeoffs, when stuck after a failed attempt, when a delegated result looks off, and before accepting substantial or risky work. Skip it for trivial or mechanical work. Each agent's definition sets its own limit: planner 2, worker 2 (Codex worker per `~/.codex/AGENTS.md`, or the fallback Claude worker), technical-writer 2, and none for reviewer, explorer and researcher.
+It does not see the conversation, so write a self-contained question with paths and evidence, and tell it not to edit anything. Consulting it is the default in the primary session, not an exception; when unsure whether a call is worth it, make it. Up to about ten calls per task.
+
+Consult it at these checkpoints on any non-trivial task:
+- before choosing an approach or decomposition, and before deciding whether a planner is needed
+- before dispatching a worker, to check the acceptance criteria and brief for gaps
+- at any design fork, tradeoff, or ambiguous requirement, before deciding it yourself or asking the user
+- when a delegated result, check, or review verdict looks off or surprising
+- when stuck: after a failed implementation attempt, a check that fails twice, or a review round that does not converge, before retrying or escalating
+- before accepting substantial or risky work, and before reporting it as done
+
+Run advisor calls concurrently with other work when the answer isn't needed immediately. Weigh the advice, but your own evidence wins when the two conflict; mention in the final report what it flagged and what you did about it. Skip it only for trivial or mechanical work: typos, renames, formatting, single lookups, and one-line config tweaks.
+
+Each agent's definition sets its own limit: planner 2, worker 2 (Codex worker per `~/.codex/AGENTS.md`, or the fallback Claude worker), technical-writer 2, and none for reviewer, explorer and researcher.
 
 ## Commits
 
