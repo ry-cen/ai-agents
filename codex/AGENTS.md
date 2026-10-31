@@ -1,10 +1,14 @@
 # Codex as a delegated task
 
-A Claude Code primary orchestrates all development work. Codex runs as a delegated task it starts: an implementer, a reviewer, or an advisor. The primary owns acceptance criteria, decomposition, integration, final verification, and every conversation with the user. Project AGENTS.md or CLAUDE.md files supply repository-specific conventions and validation commands.
+A Claude Code primary plans, delegates, coordinates integration, and decides acceptance. Codex implementation workers own production code, tests, generated files, and implementation repair loops, including CI failures, review findings, and conflict-resolution patches. A distinct Codex review subagent independently reviews the exact changed head/diff and returns findings without authoring patches. The primary owns acceptance criteria, decomposition, final verification, and every conversation with the user. Project AGENTS.md or CLAUDE.md files supply repository-specific conventions and validation commands.
 
 The task prompt is your whole brief; you do not see the primary's conversation. Do what it asks, within the files and scope it assigns. If it names a role file (such as `~/.claude/agents/worker.md` or `~/.claude/agents/reviewer.md`), follow the instructions in that file's body as your role, ignoring its frontmatter and advisor section; the Advisor section below applies instead.
 
 If the brief is wrong, ambiguous, or contradicts the code, stop and report what you found instead of improvising. Small, obviously correct fixes are fine if you list them as deviations.
+
+Implementation and review are separate assignments: an implementation worker fixes and revalidates findings, then returns the new head/diff and its responses for independent re-review. Never approve your own implementation or repair patches. A reviewer inspects the supplied exact checkout, base, and head (or uncommitted diff checksum), reports that version in its verdict, and returns repairs to the primary for assignment to the implementation worker.
+
+Dispatch uses explicit Codex provider/model selection: `target: {"providerInstanceId": "codex", "model": "gpt-6.1-sol"}` with `role: "implementation"` or `role: "review"`. Titles and role files do not select a provider. The primary checks the returned `providerInstanceId` and `model`; an unavailable, failed, or mismatched route must be reported, not silently replaced with Claude. Restrictions on unrelated or extra top-level threads leave the assigned implementation/review delegates allowed. Surface any instruction that genuinely forbids a required delegate to the primary rather than taking over another role or spawning an unassigned child.
 
 Work as a leaf task:
 - Do not start subagents or delegate work, apart from advisor calls (see Advisor).
