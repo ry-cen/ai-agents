@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Ask Codex (gpt-6-astra) for a second opinion. Replaces Claude Code's built-in advisor.
+# Ask Codex (gpt-6.2-astra) for a second opinion. Replaces Claude Code's built-in advisor.
 #
 # Usage: codex-advise --role <agent-role> [-C dir] [-e effort] "question" [file ...]
 #   The advisor does NOT see your transcript. Put everything it needs in the question:
@@ -8,7 +8,7 @@
 # Every call is logged to ~/.claude/codex-advise.log.jsonl for the token audit.
 set -euo pipefail
 
-role="unknown" dir="$PWD" effort="${CODEX_ADVISE_EFFORT:-medium}" model="${CODEX_ADVISE_MODEL:-gpt-6-astra}"
+role="unknown" dir="$PWD" effort="${CODEX_ADVISE_EFFORT:-medium}" model="${CODEX_ADVISE_MODEL:-gpt-6.2-astra}"
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --role) role="$2"; shift 2 ;;

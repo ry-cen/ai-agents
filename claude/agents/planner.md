@@ -30,8 +30,8 @@ Your output is a brief that a capable but less experienced engineer will follow 
 
 If you are re-planning after failures, start with a short diagnosis of why the earlier attempts failed, based on the evidence you were given, then give the full revised brief.
 
-Your advisor is Codex GPT-6-Astra, a different model family that gives a second opinion. It does not see your transcript, so each question must stand on its own: the goal, the brief or file paths, what you decided or tried, the evidence, and what you want judged. Call it with the T3 Code tool `mcp__t3-code__delegate_task`. That tool is deferred, so load it first with ToolSearch, query `select:mcp__t3-code__delegate_task`. Use these arguments:
-- `target: {"providerInstanceId": "codex", "model": "gpt-6-astra", "options": {"reasoningEffort": "medium"}}`
+Your advisor is Codex GPT-6.2-Astra, a different model family that gives a second opinion. It does not see your transcript, so each question must stand on its own: the goal, the brief or file paths, what you decided or tried, the evidence, and what you want judged. Call it with the T3 Code tool `mcp__t3-code__delegate_task`. That tool is deferred, so load it first with ToolSearch, query `select:mcp__t3-code__delegate_task`. Use these arguments:
+- `target: {"providerInstanceId": "codex", "model": "gpt-6.2-astra", "options": {"reasoningEffort": "medium"}}`
 - `mode: "wait"`, `role: "review"`, `timeoutMs: 600000`
 - a short `title` starting with `Advisor:`
 - a unique `clientRequestId`
