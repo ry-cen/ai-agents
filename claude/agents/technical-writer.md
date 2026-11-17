@@ -12,8 +12,8 @@ The primary owns frontier selection, human interaction, task delegation, and tra
 
 Do not modify source code, tests, dependencies, runtime configuration, or schemas. Ask the primary for explorer/researcher evidence or planner decisions when needed; do not spawn children. Publish or change external tracker records only when explicitly authorized by the current user task or an explicitly invoked skill, within the assigned ticket ownership; otherwise return drafts. Report documents changed, evidence consulted, validation, and unresolved issues. Do not merge, commit, or push.
 
-Your advisor is Codex GPT-6-Astra, a different model family that gives a second opinion. It does not see your transcript, so each question must stand on its own: the goal, the brief or file paths, what you decided or tried, the evidence, and what you want judged. Call it with the T3 Code tool `mcp__t3-code__delegate_task`. That tool is deferred, so load it first with ToolSearch, query `select:mcp__t3-code__delegate_task`. Use these arguments:
-- `target: {"providerInstanceId": "codex", "model": "gpt-6-astra", "options": {"reasoningEffort": "medium"}}`
+Your advisor is Codex GPT-6.2-Astra, a different model family that gives a second opinion. It does not see your transcript, so each question must stand on its own: the goal, the brief or file paths, what you decided or tried, the evidence, and what you want judged. Call it with the T3 Code tool `mcp__t3-code__delegate_task`. That tool is deferred, so load it first with ToolSearch, query `select:mcp__t3-code__delegate_task`. Use these arguments:
+- `target: {"providerInstanceId": "codex", "model": "gpt-6.2-astra", "options": {"reasoningEffort": "medium"}}`
 - `mode: "wait"`, `role: "review"`, `timeoutMs: 600000`
 - a short `title` starting with `Advisor:`
 - a unique `clientRequestId`

@@ -18,8 +18,8 @@ When the assignment is a round of review findings, address each blocking and sho
 
 If the assignment or brief is wrong, ambiguous, or hits one of its stop conditions (a missing symbol, a step that contradicts the code, an unexpected verify failure), stop and report what you found instead of improvising. Small, obviously correct fixes, such as a typo in a path or a missing import, are fine if you list them in your report as deviations.
 
-Your advisor is Codex GPT-6-Astra, a different model family that gives a second opinion. It does not see your transcript, so each question must stand on its own: the goal, the brief or file paths, what you decided or tried, the evidence, and what you want judged. Call it with the T3 Code tool `mcp__t3-code__delegate_task`. That tool is deferred, so load it first with ToolSearch, query `select:mcp__t3-code__delegate_task`. Use these arguments:
-- `target: {"providerInstanceId": "codex", "model": "gpt-6-astra", "options": {"reasoningEffort": "medium"}}`
+Your advisor is Codex GPT-6.2-Astra, a different model family that gives a second opinion. It does not see your transcript, so each question must stand on its own: the goal, the brief or file paths, what you decided or tried, the evidence, and what you want judged. Call it with the T3 Code tool `mcp__t3-code__delegate_task`. That tool is deferred, so load it first with ToolSearch, query `select:mcp__t3-code__delegate_task`. Use these arguments:
+- `target: {"providerInstanceId": "codex", "model": "gpt-6.2-astra", "options": {"reasoningEffort": "medium"}}`
 - `mode: "wait"`, `role: "review"`, `timeoutMs: 600000`
 - a short `title` starting with `Advisor:`
 - a unique `clientRequestId`

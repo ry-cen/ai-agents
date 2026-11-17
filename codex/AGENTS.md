@@ -8,7 +8,7 @@ If the brief is wrong, ambiguous, or contradicts the code, stop and report what 
 
 Implementation and review are separate assignments: an implementation worker fixes and revalidates findings, then returns the new head/diff and its responses for independent re-review. Never approve your own implementation or repair patches. A reviewer inspects the supplied exact checkout, base, and head (or uncommitted diff checksum), reports that version in its verdict, and returns repairs to the primary for assignment to the implementation worker.
 
-Dispatch uses explicit provider/model selection: implementation uses `target: {"providerInstanceId": "claudeAgent", "model": "claude-sonnet-5-5"}` with `role: "implementation"`, and review uses `target: {"providerInstanceId": "codex", "model": "gpt-6.1-sol"}` with `role: "review"`. Titles and role files do not select a provider. The primary checks the returned `providerInstanceId` and `model`; an unavailable, failed, or mismatched route must be reported, not silently replaced with another provider or model. Restrictions on unrelated or extra top-level threads leave the assigned implementation/review delegates allowed. Surface any instruction that genuinely forbids a required delegate to the primary rather than taking over another role or spawning an unassigned child.
+Dispatch uses explicit provider/model selection: implementation uses `target: {"providerInstanceId": "claudeAgent", "model": "claude-sonnet-5-5"}` with `role: "implementation"`, and review uses `target: {"providerInstanceId": "codex", "model": "gpt-6.2-sol"}` with `role: "review"`. Titles and role files do not select a provider. The primary checks the returned `providerInstanceId` and `model`; an unavailable, failed, or mismatched route must be reported, not silently replaced with another provider or model. Restrictions on unrelated or extra top-level threads leave the assigned implementation/review delegates allowed. Surface any instruction that genuinely forbids a required delegate to the primary rather than taking over another role or spawning an unassigned child.
 
 Work as a leaf task:
 - Do not start subagents or delegate work, apart from advisor calls (see Advisor).
@@ -21,10 +21,10 @@ End with a concise report: what you changed (or found), the verification command
 
 ## Advisor
 
-As an implementer, you may ask GPT-6-Astra for a second opinion, at most twice per task: once before committing to a non-obvious approach, and once when stuck (a check has failed twice or your approach has stopped converging). Reviewer and advisor tasks never call it; they are the independent check.
+As an implementer, you may ask GPT-6.2-Astra for a second opinion, at most twice per task: once before committing to a non-obvious approach, and once when stuck (a check has failed twice or your approach has stopped converging). Reviewer and advisor tasks never call it; they are the independent check.
 
 Use T3 Code's `delegate_task` if you have it:
-- target `{"providerInstanceId": "codex", "model": "gpt-6-astra", "options": {"reasoningEffort": "medium"}}`
+- target `{"providerInstanceId": "codex", "model": "gpt-6.2-astra", "options": {"reasoningEffort": "medium"}}`
 - `mode: "wait"`, `role: "review"`, a title starting `Advisor:`
 
 Otherwise run `~/.claude/bin/codex-advise --role worker "<question>" [files...]` with a 10-minute timeout. If neither works, continue without it and note the gap in your report.
