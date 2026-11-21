@@ -29,3 +29,5 @@ ln -s "$AI_AGENTS/claude/<item>" ~/.claude/<item>
 ```
 
 If a tool rewrites a linked file (such as `CLAUDE.md`) by replacing it, the link becomes a plain file and edits stop showing in `git status`. Move it back into the repo and relink it.
+
+The pstack workflow skill lives in `agents/skills/pstack` and is linked into Claude via `claude/skills/pstack` (Codex finds it through `~/.agents/skills`). Opt out with "no pstack" or "pstack off". To roll back, revert the commit or remove the `claude/skills/pstack` symlink and `agents/skills/pstack`; live sessions pick changes up only after the live checkout is updated.
