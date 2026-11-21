@@ -1,6 +1,6 @@
 # Handoff
 
-Adapted from pstack poteto-mode/playbooks/pause-safely.md (MIT).
+Adapted from pstack skills/poteto-mode/playbooks/pause-safely.md (MIT).
 
 Use when stopping mid-task or when the user asks to pause. If the user said keep going, do not pause.
 

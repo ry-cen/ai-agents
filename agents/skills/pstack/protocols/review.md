@@ -1,6 +1,6 @@
 # Review
 
-Adapted from pstack skills/interrogate, skills/blast-radius (MIT).
+Adapted from pstack skills/interrogate/SKILL.md, skills/blast-radius/SKILL.md (MIT).
 
 The primary dispatches an independent Sol reviewer per `~/.claude/CLAUDE.md` routing, with the exact checkout, base, head, intent, and verify commands. The reviewer is read-only (see `reviewer.md`): it returns findings, never patches, and runs only the verify commands it is given or the repo documents.
 

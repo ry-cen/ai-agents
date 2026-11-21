@@ -1,6 +1,6 @@
 # Architecture
 
-Adapted from pstack skills/architect, skills/principle-model-the-domain, skills/principle-foundational-thinking, skills/principle-boundary-discipline (MIT).
+Adapted from pstack skills/architect/SKILL.md, skills/principle-model-the-domain/SKILL.md, skills/principle-foundational-thinking/SKILL.md, skills/principle-boundary-discipline/SKILL.md (MIT).
 
 Use before code when the change locks in a shape: new types, signatures, module boundaries, or shared state. Design only; no implementation.
 

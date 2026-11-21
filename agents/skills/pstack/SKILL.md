@@ -1,6 +1,7 @@
 ---
 name: pstack
-description: Staged engineering workflow (discover, architect, plan, implement, review, verify, hand off) for substantive engineering: features, bug fixes, refactors, migrations, multi-file or cross-module changes, and design decisions. Also for "pstack", "/pstack", "pstack workflow". Not for trivial or mechanical edits (typos, renames, formatting, one-line config) or read-only Q&A.
+description: >-
+  Staged engineering workflow (discover, architect, plan, implement, review, verify, hand off) for substantive engineering: features, bug fixes, refactors, migrations, multi-file or cross-module changes, and design decisions. Also for "pstack", "/pstack", "pstack workflow". Not for trivial or mechanical edits (typos, renames, formatting, one-line config) or read-only Q&A.
 ---
 
 # pstack
@@ -11,7 +12,7 @@ Adapted staged workflow. Protocols are short guidance files; read only the ones 
 
 - Only the primary coordinator (the Claude Opus session that owns the task) selects stages automatically for substantive engineering. An explicit user request can select pstack for smaller work.
 - Opt-out wins: "no pstack", "pstack off", or a project instruction saying so means do not use it.
-- A delegated child (Sonnet worker, Codex Sol reviewer, Codex Astra advisor, Opus planner, haiku explorer or researcher, technical-writer) reads only the protocol that matches its brief. It never runs orchestrator steps and never spawns or delegates (the Sonnet worker's advisor calls under `worker.md` are the one exception). Its brief wins over pstack. Astra gives advice only; Sol reviews only the exact assigned version.
+- A delegated child (Sonnet worker, Codex Sol reviewer, Codex Astra advisor, Opus planner, haiku explorer or researcher, technical-writer) reads only the protocol that matches its brief. It never runs orchestrator steps and never spawns workers or reviewers or delegates tasks; advisor calls are allowed exactly as that child's own role file permits. Its brief wins over pstack. Astra gives advice only; Sol reviews only the exact assigned version.
 
 ## Precedence
 
