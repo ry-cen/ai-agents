@@ -1,0 +1,3 @@
+interface:
+  display_name: "pstack"
+  short_description: "Staged workflow: discover, plan, build, review, verify"

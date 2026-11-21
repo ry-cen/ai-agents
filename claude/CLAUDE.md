@@ -20,6 +20,10 @@ Create Git worktrees inside the repository at `<repo>/.claude/worktrees/<name>`,
 
 For specs, requirements, documentation, and Wayfinder map or ticket prose, prefer technical-writer. The primary coordinates planning skills and human approvals; the writer drafts assigned artifacts from established context, while design and implementation stay with the planner and workers.
 
+## pstack workflow
+
+Role check first: only the primary coordinator (the Claude Opus session that owns the task) loads the `pstack` skill automatically, at the start of substantive engineering (features, bug fixes, refactors, migrations, multi-file changes, design decisions). An explicit user request can select it for smaller work. "no pstack", "pstack off", or a project instruction saying so always wins. Delegated children use only the protocol their brief names and never run orchestrator steps. This file, project instructions, and approval rules take precedence; a pstack recommendation never authorizes a commit, push, merge, or deploy.
+
 ## Implementer and reviewer
 
 Implementation runs in a Claude Sonnet 5.5 subagent and independent review in a Codex GPT-6.2-Sol subagent, both through T3 Code's `delegate_task`. Explicitly select the provider and model for each dispatch; titles, role names, inherited defaults, and native Claude `worker`/`reviewer` Agent-tool calls do not select the route. References to a worker or reviewer in project instructions or skills use this routing:

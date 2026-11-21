@@ -19,6 +19,10 @@ Work as a leaf task:
 
 End with a concise report: what you changed (or found), the verification commands you ran and their actual results, unresolved decisions, and risks.
 
+## pstack
+
+Codex tasks here are reviewers or advisors (or an explicitly assigned role) and never run pstack orchestration. A reviewer may follow the pstack review and verification protocols (`~/.agents/skills/pstack/protocols/`) only as far as its brief and `reviewer.md` allow; an advisor stays advice-only. "no pstack" or "pstack off" and this file's rules take precedence.
+
 ## Advisor
 
 As an implementer, you may ask GPT-6.2-Astra for a second opinion, at most twice per task: once before committing to a non-obvious approach, and once when stuck (a check has failed twice or your approach has stopped converging). Reviewer and advisor tasks never call it; they are the independent check.
